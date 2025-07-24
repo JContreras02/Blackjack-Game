@@ -13,9 +13,16 @@ def deal_card():
     return user_card
 
 # Function that sums up the score
-def calculate_score():
+def calculate_score(cards):
     """Function that takes the list of cards as input and returns the sum as a score."""
-    return
+    if sum(cards) & (len(cards) == 2):
+        return 0
+    
+    if (11 in cards) & (sum(cards) > 21):
+        cards.remove(11)
+        cards.append(1)
+        
+    return sum(cards)
 
 user_hand = []
 computer_hand = []
@@ -23,3 +30,5 @@ computer_hand = []
 for _ in range(2):
     user_hand.append(deal_card())
     computer_hand.append(deal_card())
+
+
